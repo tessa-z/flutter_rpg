@@ -5,21 +5,24 @@ class StyledButton extends StatelessWidget {
   const StyledButton({super.key, required this.child, required this.onPressed});
 
   final Widget child;
-  final Function onPressed;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [AppColors.primaryColor, AppColors.primaryAccent],
+    return TextButton(
+      onPressed: onPressed,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [AppColors.primaryColor, AppColors.primaryAccent],
+          ),
         ),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        child: child,
       ),
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-      child: child,
     );
   }
 }

@@ -42,6 +42,14 @@ ThemeData primaryTheme = ThemeData(
     ),
   ),
 
+  inputDecorationTheme: InputDecorationTheme(
+    filled: true,
+    fillColor: AppColors.secondaryColor.withAlpha(127),
+    border: InputBorder.none,
+    prefixIconColor: AppColors.textColor,
+    labelStyle: TextStyle(color: AppColors.textColor),
+  ),
+
   cardTheme: CardTheme(
     color: AppColors.secondaryColor,
     shadowColor: Colors.transparent,
