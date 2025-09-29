@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/models/vocation.dart';
+import 'package:flutter_rpg/screens/create/vocation_card.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 import 'package:flutter_rpg/theme.dart';
@@ -43,47 +45,78 @@ class _CreateState extends State<Create> {
       appBar: AppBar(title: StyledHeadline('Character Creation')),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Center(
-              child: Icon(Icons.code, size: 40, color: AppColors.primaryColor),
-            ),
-            Center(child: StyledTitle('Welcome, new player.')),
-            Center(
-              child: StyledText('Create a name and slogan for your character.'),
-            ),
-            SizedBox(height: 40),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              // welcome
+              Center(
+                child: Icon(
+                  Icons.code,
+                  size: 40,
+                  color: AppColors.primaryColor,
+                ),
+              ),
+              Center(child: StyledTitle('Welcome, new player.')),
+              Center(
+                child: StyledText(
+                  'Create a name and slogan for your character.',
+                ),
+              ),
+              SizedBox(height: 40),
 
-            TextField(
-              controller: _nameController,
-              style: GoogleFonts.kanit(
-                textStyle: Theme.of(context).textTheme.bodyMedium,
+              TextField(
+                controller: _nameController,
+                style: GoogleFonts.kanit(
+                  textStyle: Theme.of(context).textTheme.bodyMedium,
+                ),
+                cursorColor: AppColors.textColor,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.person_2),
+                  labelText: 'Character name',
+                ),
               ),
-              cursorColor: AppColors.textColor,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.person_2),
-                labelText: 'Character name',
+              SizedBox(height: 20),
+              TextField(
+                controller: _sloganController,
+                style: GoogleFonts.kanit(
+                  textStyle: Theme.of(context).textTheme.bodyMedium,
+                ),
+                cursorColor: AppColors.textColor,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.chat),
+                  labelText: 'Character slogan',
+                ),
               ),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              controller: _sloganController,
-              style: GoogleFonts.kanit(
-                textStyle: Theme.of(context).textTheme.bodyMedium,
+              SizedBox(height: 40),
+
+              // vocation
+              Center(
+                child: Icon(
+                  Icons.code,
+                  size: 40,
+                  color: AppColors.primaryColor,
+                ),
               ),
-              cursorColor: AppColors.textColor,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.chat),
-                labelText: 'Character slogan',
+              Center(child: StyledTitle('Choose a vocation.')),
+              Center(
+                child: StyledText('This determines your available skills.'),
               ),
-            ),
-            SizedBox(height: 40),
-            StyledButton(
-              onPressed: handleSubmit,
-              child: StyledTitle('Create character'),
-            ),
-          ],
+              SizedBox(height: 30),
+
+              VocationCard(vocation: Vocation.raider),
+              VocationCard(vocation: Vocation.junkie),
+              VocationCard(vocation: Vocation.ninja),
+              VocationCard(vocation: Vocation.wizard),
+
+              SizedBox(height: 10),
+
+              StyledButton(
+                onPressed: handleSubmit,
+                child: StyledTitle('Create character'),
+              ),
+            ],
+          ),
         ),
       ),
     );

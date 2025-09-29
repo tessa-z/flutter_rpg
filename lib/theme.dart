@@ -50,7 +50,7 @@ ThemeData primaryTheme = ThemeData(
     labelStyle: TextStyle(color: AppColors.textColor),
   ),
 
-  cardTheme: CardTheme(
+  cardTheme: CardThemeData(
     color: AppColors.secondaryColor,
     shadowColor: Colors.transparent,
     margin: const EdgeInsets.only(bottom: 16.0),
