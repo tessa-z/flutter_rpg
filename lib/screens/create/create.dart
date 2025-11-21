@@ -144,6 +144,17 @@ class _CreateState extends State<Create> {
                 isSelected: selectedVocation == Vocation.wizard,
               ),
 
+              Center(
+                child: Icon(
+                  Icons.code,
+                  size: 40,
+                  color: AppColors.primaryColor,
+                ),
+              ),
+              Center(child: StyledTitle('Good luck.')),
+              Center(child: StyledText('Enjoy the journey...')),
+              SizedBox(height: 30),
+
               SizedBox(height: 10),
 
               StyledButton(
