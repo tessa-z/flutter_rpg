@@ -16,7 +16,6 @@ class Create extends StatefulWidget {
 class _CreateState extends State<Create> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _sloganController = TextEditingController();
-  Vocation selectedVocation = Vocation.raider;
 
   void handleSubmit() {
     // Handle form submission logic here
@@ -32,18 +31,20 @@ class _CreateState extends State<Create> {
     debugPrint(_sloganController.text);
   }
 
-  void updateVocation(Vocation vocation) {
-    setState(() {
-      selectedVocation = vocation;
-    });
-  }
-
   @override
   void dispose() {
     // Dispose controllers when create screen is no longer 'live'
     _nameController.dispose();
     _sloganController.dispose();
     super.dispose();
+  }
+
+  Vocation selectedVocation = Vocation.raider;
+
+  void updateVocation(Vocation vocation) {
+    setState(() {
+      selectedVocation = vocation;
+    });
   }
 
   @override
@@ -112,20 +113,24 @@ class _CreateState extends State<Create> {
               SizedBox(height: 30),
 
               VocationCard(
-                updateVocation: updateVocation,
+                onTap: updateVocation,
                 vocation: Vocation.raider,
+                isSelected: selectedVocation == Vocation.raider,
               ),
               VocationCard(
-                updateVocation: updateVocation,
+                onTap: updateVocation,
                 vocation: Vocation.junkie,
+                isSelected: selectedVocation == Vocation.junkie,
               ),
               VocationCard(
-                updateVocation: updateVocation,
+                onTap: updateVocation,
                 vocation: Vocation.ninja,
+                isSelected: selectedVocation == Vocation.ninja,
               ),
               VocationCard(
-                updateVocation: updateVocation,
+                onTap: updateVocation,
                 vocation: Vocation.wizard,
+                isSelected: selectedVocation == Vocation.wizard,
               ),
 
               SizedBox(height: 10),
