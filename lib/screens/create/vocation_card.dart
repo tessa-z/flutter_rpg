@@ -30,7 +30,6 @@ class VocationCard extends StatelessWidget {
               Image(
                 image: AssetImage('assets/img/vocations/${vocation.image}'),
                 width: 80,
-                height: 80,
                 colorBlendMode: BlendMode.color,
                 color:
                     !isSelected
