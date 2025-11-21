@@ -16,6 +16,7 @@ class Create extends StatefulWidget {
 class _CreateState extends State<Create> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _sloganController = TextEditingController();
+  Vocation selectedVocation = Vocation.raider;
 
   void handleSubmit() {
     // Handle form submission logic here
@@ -29,6 +30,12 @@ class _CreateState extends State<Create> {
     }
     debugPrint(_nameController.text);
     debugPrint(_sloganController.text);
+  }
+
+  void updateVocation(Vocation vocation) {
+    setState(() {
+      selectedVocation = vocation;
+    });
   }
 
   @override
@@ -88,7 +95,7 @@ class _CreateState extends State<Create> {
                   labelText: 'Character slogan',
                 ),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 10),
 
               // vocation
               Center(
@@ -104,10 +111,22 @@ class _CreateState extends State<Create> {
               ),
               SizedBox(height: 30),
 
-              VocationCard(vocation: Vocation.raider),
-              VocationCard(vocation: Vocation.junkie),
-              VocationCard(vocation: Vocation.ninja),
-              VocationCard(vocation: Vocation.wizard),
+              VocationCard(
+                updateVocation: updateVocation,
+                vocation: Vocation.raider,
+              ),
+              VocationCard(
+                updateVocation: updateVocation,
+                vocation: Vocation.junkie,
+              ),
+              VocationCard(
+                updateVocation: updateVocation,
+                vocation: Vocation.ninja,
+              ),
+              VocationCard(
+                updateVocation: updateVocation,
+                vocation: Vocation.wizard,
+              ),
 
               SizedBox(height: 10),
 
